@@ -72,4 +72,10 @@ body {
 
 .carrot {
   position: absolute;
+  cursor: pointer;
+}
+
+.bug {
+  position: absolute;
+  cursor: pointer;
 }

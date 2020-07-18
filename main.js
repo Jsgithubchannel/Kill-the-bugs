@@ -1,11 +1,15 @@
 const start = document.querySelector(".start__btn");
 const end = document.querySelector(".end__btn");
+const bg = document.querySelector(".background");
+const carrot = document.querySelectorAll(".carrot");
+const bug = document.querySelectorAll(".bug");
+const menu = document.querySelector(".menu__container");
+
 start.addEventListener("click", (event) => {
   onStart();
-  //countdown 10 to 0
   countDownTimer();
-  //randomize imgs
-  randomize();
+  setPosition(carrot);
+  setPosition(bug);
 });
 
 function onStart() {
@@ -24,21 +28,15 @@ function countDownTimer() {
   }, 1000);
 }
 
-function randomize() {
-  const bg = document.querySelector(".background");
-  const carrot = document.querySelectorAll(".carrot");
-  //const bug = document.querySelector(".bug");
-  const menu = document.querySelector(".menu__container");
+function setPosition(e) {
+  for (let i = 0; i < e.length; i++) {
+    const e_w = e[i].clientWidth;
+    const e_h = e[i].clientHeight;
+    const max_w = bg.clientWidth - e_w;
+    const max_h = bg.clientHeight - menu.clientHeight - e_h;
 
-  for (let i = 0; i < carrot.length; i++) {
-    const carrot_w = carrot[i].clientWidth;
-    const carrot_h = carrot[i].clientHeight;
-    const max_w = bg.clientWidth - carrot_w;
-    const max_h = bg.clientHeight - menu.clientHeight - carrot_h;
-
-    carrot[i].style.left =
-      Math.floor(Math.random() * max_w) + bg.offsetLeft + "px";
-    carrot[i].style.top =
+    e[i].style.left = Math.floor(Math.random() * max_w) + bg.offsetLeft + "px";
+    e[i].style.top =
       Math.floor(Math.random() * max_h) +
       menu.clientHeight -
       bg.clientHeight +
