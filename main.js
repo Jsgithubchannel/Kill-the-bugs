@@ -4,13 +4,20 @@ const bg = document.querySelector(".background");
 const carrot = document.querySelectorAll(".carrot");
 const bug = document.querySelectorAll(".bug");
 const menu = document.querySelector(".menu__container");
-
+const catch_cnt = document.querySelector(".catch__cnt");
 start.addEventListener("click", (event) => {
   onStart();
   countDownTimer();
   setPosition(carrot);
   setPosition(bug);
 });
+
+for (let i = 0; i < carrot.length; i++) {
+  carrot[i].addEventListener("click", () => {
+    carrot[i].style.visibility = "hidden";
+    catch_cnt.textContent++;
+  });
+}
 
 function onStart() {
   const imgs = document.querySelector(".img__container");
@@ -20,11 +27,26 @@ function onStart() {
 }
 
 function countDownTimer() {
+  const timer = document.querySelector(".cntdown__timer");
   let timeleft = 10;
+
   let download_timer = setInterval(function () {
+    const container = document.querySelector(".container");
     timeleft--;
-    document.querySelector(".cntdown__timer").textContent = `0:${timeleft}`;
-    if (timeleft <= 0) clearInterval(download_timer);
+    timer.textContent = `0:${timeleft}`;
+
+    //time over
+    if (timeleft <= 0) {
+      clearInterval(download_timer);
+      container.style.visibility = "visible";
+    }
+    //when click a bug
+    for (let i = 0; i < bug.length; i++) {
+      bug[i].addEventListener("click", () => {
+        clearInterval(download_timer);
+        container.style.visibility = "visible";
+      });
+    }
   }, 1000);
 }
 

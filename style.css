@@ -79,3 +79,29 @@ body {
   position: absolute;
   cursor: pointer;
 }
+
+.container {
+  visibility: hidden;
+}
+
+.lose {
+  display: block;
+  margin: 0 300px;
+  text-align: center;
+  background-color: rgb(241, 209, 217, 0.7);
+  padding: 30px;
+  transform: translateY(-500px);
+  border-radius: 30px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.try__again {
+  outline: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 0 20px;
+  background-color: rgba(232, 195, 223, 0.8);
+}
