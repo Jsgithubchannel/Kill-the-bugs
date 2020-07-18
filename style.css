@@ -69,3 +69,7 @@ body {
   justify-content: center;
   visibility: hidden;
 }
+
+.carrot {
+  position: absolute;
+}

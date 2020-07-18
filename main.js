@@ -5,6 +5,7 @@ start.addEventListener("click", (event) => {
   //countdown 10 to 0
   countDownTimer();
   //randomize imgs
+  randomize();
 });
 
 function onStart() {
@@ -23,4 +24,24 @@ function countDownTimer() {
   }, 1000);
 }
 
-function randomize() {}
+function randomize() {
+  const bg = document.querySelector(".background");
+  const carrot = document.querySelectorAll(".carrot");
+  //const bug = document.querySelector(".bug");
+  const menu = document.querySelector(".menu__container");
+
+  for (let i = 0; i < carrot.length; i++) {
+    const carrot_w = carrot[i].clientWidth;
+    const carrot_h = carrot[i].clientHeight;
+    const max_w = bg.clientWidth - carrot_w;
+    const max_h = bg.clientHeight - menu.clientHeight - carrot_h;
+
+    carrot[i].style.left =
+      Math.floor(Math.random() * max_w) + bg.offsetLeft + "px";
+    carrot[i].style.top =
+      Math.floor(Math.random() * max_h) +
+      menu.clientHeight -
+      bg.clientHeight +
+      "px";
+  }
+}
