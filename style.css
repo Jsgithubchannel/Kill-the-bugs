@@ -5,6 +5,7 @@ body {
 .background {
   display: block;
   margin: auto;
+  position: relative;
   width: 900px;
   border-radius: 10%;
 }
@@ -17,7 +18,8 @@ body {
   bottom: 500px;
 }
 
-.start__btn {
+.start__btn,
+.end__btn {
   width: 70px;
   height: 60px;
   margin: 2px;
@@ -27,6 +29,12 @@ body {
   outline: none;
   cursor: pointer;
   background-color: bisque;
+}
+
+.end__btn {
+  position: relative;
+  bottom: 196px;
+  visibility: hidden;
 }
 
 .cntdown__timer {
@@ -54,6 +62,10 @@ body {
 }
 
 .img__container {
+  position: relative;
+  bottom: 300px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  visibility: hidden;
 }
