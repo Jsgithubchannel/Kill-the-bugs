@@ -87,11 +87,11 @@ body {
 
 .lose {
   display: block;
-  margin: 0 300px;
+  margin: 0 550px;
   text-align: center;
   background-color: rgb(241, 209, 217, 0.7);
-  padding: 30px;
-  transform: translateY(-500px);
+  padding: 20px 30px 95px;
+  transform: translateY(-480px);
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
@@ -100,11 +100,11 @@ body {
 
 .win {
   display: block;
-  margin: 0 300px;
+  margin: 0 550px;
   text-align: center;
   background-color: rgb(241, 209, 217, 0.7);
-  padding: 50px;
-  transform: translateY(-700px);
+  padding: 20px 30px 80px;
+  transform: translateY(-650px);
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
@@ -112,6 +112,7 @@ body {
 }
 
 .try__again {
+  display: block;
   outline: none;
   border: none;
   font-size: 28px;
@@ -119,4 +120,8 @@ body {
   color: white;
   padding: 0 20px;
   background-color: rgba(232, 195, 223, 0.8);
+  position: relative;
+  bottom: 700px;
+  margin: auto;
+  visibility: hidden;
 }

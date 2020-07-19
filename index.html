@@ -47,21 +47,13 @@
     </img>
     <section class="ctr">
       <div class="lose">DON'T WORRY<br>YOU CAN TRY AGAIN<br>
-        <!-- 이 클래스 동적으로 바꾸기 -->
-        <button class="try__again">
-          try again
-        </button>
       </div>
-      
-    </section>
-    <section class="ctr">
-      <audio class="game_win" src="sound\game_win.mp3"></audio>
       <div class="win">CONGRATULATIONS!<br>
-        <button class="try__again">
-          try again
-        </button>
+        <audio class="game_win" src="sound\game_win.mp3"></audio>
       </div>
-      
+      <button onclick="tryAgain()" class="try__again">
+        try again
+      </button>
     </section>
   </body>
 </html>
