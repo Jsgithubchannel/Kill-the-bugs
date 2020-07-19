@@ -5,8 +5,8 @@ body {
 .background {
   display: block;
   margin: auto;
-  position: relative;
-  width: 900px;
+  max-width: 900px;
+  max-height: 600px;
   border-radius: 10%;
 }
 
@@ -64,21 +64,23 @@ body {
 
 .img__container {
   position: relative;
-  bottom: 300px;
+  max-width: 900px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  align-items: stretch;
+  margin: auto;
   visibility: hidden;
 }
 
 .carrot {
-  position: absolute;
+  position: relative;
   cursor: pointer;
 }
 
 .bug {
-  position: absolute;
+  position: relative;
   cursor: pointer;
+  height: 100%;
 }
 
 .ctr {
@@ -91,7 +93,7 @@ body {
   text-align: center;
   background-color: rgb(241, 209, 217, 0.7);
   padding: 20px 30px 95px;
-  transform: translateY(-480px);
+  transform: translateY(-250px);
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
@@ -104,7 +106,7 @@ body {
   text-align: center;
   background-color: rgb(241, 209, 217, 0.7);
   padding: 20px 30px 80px;
-  transform: translateY(-650px);
+  transform: translateY(-420px);
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
@@ -121,7 +123,7 @@ body {
   padding: 0 20px;
   background-color: rgba(232, 195, 223, 0.8);
   position: relative;
-  bottom: 700px;
+  bottom: 480px;
   margin: auto;
   visibility: hidden;
 }

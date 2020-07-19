@@ -23,7 +23,7 @@
           <button class="end__btn"><i class="fa fa-stop" aria-hidden="true"></i></button>
         </section>
 
-        <section class="img__container">
+        <div class="img__container">
           <audio src="sound\carrot_pull.mp3" class="carrot_pull"></audio>
           <audio src="sound\bug_pull.mp3" class="bug_pull"></audio>
           <img src="img\carrot.png" alt="carrot" class="carrot" />
@@ -43,17 +43,17 @@
           <img src="img\bug.png" alt="bug" class="bug" />
           <img src="img\bug.png" alt="bug" class="bug" />
           <img src="img\bug.png" alt="bug" class="bug" />
+        </div>
+        <section class="ctr">
+          <div class="lose">DON'T WORRY<br>YOU CAN TRY AGAIN<br>
+          </div>
+          <div class="win">CONGRATULATIONS!<br>
+            <audio class="game_win" src="sound\game_win.mp3"></audio>
+          </div>
+          <button onclick="tryAgain()" class="try__again">
+            try again
+          </button>
         </section>
     </img>
-    <section class="ctr">
-      <div class="lose">DON'T WORRY<br>YOU CAN TRY AGAIN<br>
-      </div>
-      <div class="win">CONGRATULATIONS!<br>
-        <audio class="game_win" src="sound\game_win.mp3"></audio>
-      </div>
-      <button onclick="tryAgain()" class="try__again">
-        try again
-      </button>
-    </section>
   </body>
 </html>

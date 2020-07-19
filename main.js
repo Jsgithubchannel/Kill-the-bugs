@@ -12,6 +12,7 @@ const ctr = document.querySelector(".ctr");
 const lose = document.querySelector(".lose");
 const win = document.querySelector(".win");
 const timer = document.querySelector(".cntdown__timer");
+let timeleft = 0;
 
 start.addEventListener("click", () => {
   onStart();
@@ -43,7 +44,7 @@ function reset() {
     carrot[i].style.visibility = "visible";
   }
   catch_cnt.textContent = 0;
-  let timeleft = 10;
+  timeleft = 10;
   timer.textContent = `0:${timeleft}`;
 }
 
@@ -53,12 +54,12 @@ function onStart() {
   end.style.visibility = "visible";
   start.style.visibility = "hidden";
   try_again.style.visibility = "hidden";
-  bg_music.play();
+  // bg_music.play();
 }
 
 function countDownTimer() {
   const bug_pull = document.querySelector(".bug_pull");
-  let timeleft = 10;
+  timeleft = 10;
 
   let download_timer = setInterval(function () {
     const game_win = document.querySelector(".game_win");
@@ -85,8 +86,8 @@ function countDownTimer() {
     }
     for (let i = 0; i < bug.length; i++) {
       bug[i].addEventListener("click", () => {
-        bg_music.pause();
-        bug_pull.play();
+        // bg_music.pause();
+        // bug_pull.play();
         clearInterval(download_timer);
         lose.style.visibility = "visible";
         try_again.style.visibility = "visible";
@@ -96,17 +97,21 @@ function countDownTimer() {
 }
 
 function setPosition(e) {
+  const body = document.querySelector("body");
+  const imgs = document.querySelector(".img__container");
+  imgs.style.top = imgs.clientHeight - bg.clientHeight + "px";
   for (let i = 0; i < e.length; i++) {
-    const e_w = e[i].clientWidth;
+    //const e_w = e[i].clientWidth;
     const e_h = e[i].clientHeight;
-    const max_w = bg.clientWidth - e_w;
+    //const max_w = bg.clientWidth - e_w;
     const max_h = bg.clientHeight - menu.clientHeight - e_h;
 
-    e[i].style.left = Math.floor(Math.random() * max_w) + bg.offsetLeft + "px";
-    e[i].style.top =
-      Math.floor(Math.random() * max_h) +
-      menu.clientHeight -
-      bg.clientHeight +
-      "px";
+    // e[i].style.left = Math.floor(Math.random() * max_w) + bg.offsetLeft + "px";
+    // e[i].style.bottom =
+    //   Math.floor(Math.random() * max_h) +
+    //   menu.clientHeight -
+    //   bg.clientHeight +
+    //   "px";
+    e[i].style.bottom = Math.floor(Math.random() * max_h) + "px";
   }
 }
