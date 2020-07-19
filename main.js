@@ -5,7 +5,8 @@ const carrot = document.querySelectorAll(".carrot");
 const bug = document.querySelectorAll(".bug");
 const menu = document.querySelector(".menu__container");
 const catch_cnt = document.querySelector(".catch__cnt");
-start.addEventListener("click", (event) => {
+
+start.addEventListener("click", () => {
   onStart();
   countDownTimer();
   setPosition(carrot);
@@ -31,20 +32,27 @@ function countDownTimer() {
   let timeleft = 10;
 
   let download_timer = setInterval(function () {
-    const container = document.querySelector(".container");
+    const ctr = document.querySelector(".ctr");
+    const lose = document.querySelector(".lose");
+    const win = document.querySelector(".win");
+
     timeleft--;
     timer.textContent = `0:${timeleft}`;
-
-    //time over
-    if (timeleft <= 0) {
+    if (timeleft <= 0 && catch_cnt.textContent != carrot.length) {
       clearInterval(download_timer);
-      container.style.visibility = "visible";
+      ctr.style.visibility = "visible";
+      lose.style.visibility = "visible";
+    } else if (catch_cnt.textContent == carrot.length) {
+      clearInterval(download_timer);
+      ctr.style.visibility = "visible";
+      lose.style.visibility = "hidden";
+      win.style.visibility = "visible";
     }
-    //when click a bug
     for (let i = 0; i < bug.length; i++) {
       bug[i].addEventListener("click", () => {
         clearInterval(download_timer);
-        container.style.visibility = "visible";
+        ctr.style.visibility = "visible";
+        lose.style.visibility = "visible";
       });
     }
   }, 1000);

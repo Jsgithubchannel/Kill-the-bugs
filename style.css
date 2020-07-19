@@ -80,7 +80,7 @@ body {
   cursor: pointer;
 }
 
-.container {
+.ctr {
   visibility: hidden;
 }
 
@@ -91,6 +91,18 @@ body {
   background-color: rgb(241, 209, 217, 0.7);
   padding: 30px;
   transform: translateY(-500px);
+  border-radius: 30px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.win {
+  display: block;
+  margin: 0 300px;
+  text-align: center;
+  background-color: rgb(241, 209, 217, 0.7);
+  padding: 50px;
+  transform: translateY(-700px);
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
