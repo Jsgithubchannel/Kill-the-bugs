@@ -33,7 +33,7 @@ body {
 
 .end__btn {
   position: relative;
-  bottom: 196px;
+  bottom: 207px;
   visibility: hidden;
 }
 
@@ -47,18 +47,19 @@ body {
   background-color: white;
   border-radius: 10%;
   font-style: normal;
+  cursor: context-menu;
 }
 
 .catch__cnt {
-  width: 30px;
   margin: 2px;
-  padding: 0 15px;
+  padding: 5px 15px;
   font-size: 40px;
   text-align: center;
   border: 2px solid black;
   background-color: rgb(241, 209, 217);
   border-radius: 50%;
   font-style: normal;
+  cursor: context-menu;
 }
 
 .img__container {
@@ -94,6 +95,7 @@ body {
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
+  cursor: context-menu;
 }
 
 .win {
@@ -106,6 +108,7 @@ body {
   border-radius: 30px;
   font-size: 40px;
   font-weight: bolder;
+  cursor: context-menu;
 }
 
 .try__again {

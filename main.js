@@ -5,7 +5,8 @@ const carrot = document.querySelectorAll(".carrot");
 const bug = document.querySelectorAll(".bug");
 const menu = document.querySelector(".menu__container");
 const catch_cnt = document.querySelector(".catch__cnt");
-
+const carrot_pull = document.querySelector(".carrot_pull");
+const bg_music = document.querySelector(".bg_music");
 start.addEventListener("click", () => {
   onStart();
   countDownTimer();
@@ -17,6 +18,7 @@ for (let i = 0; i < carrot.length; i++) {
   carrot[i].addEventListener("click", () => {
     carrot[i].style.visibility = "hidden";
     catch_cnt.textContent++;
+    carrot_pull.play();
   });
 }
 
@@ -25,16 +27,19 @@ function onStart() {
   imgs.style.visibility = "visible";
   end.style.visibility = "visible";
   start.style.visibility = "hidden";
+  bg_music.play();
 }
 
 function countDownTimer() {
   const timer = document.querySelector(".cntdown__timer");
+  const bug_pull = document.querySelector(".bug_pull");
   let timeleft = 10;
 
   let download_timer = setInterval(function () {
     const ctr = document.querySelector(".ctr");
     const lose = document.querySelector(".lose");
     const win = document.querySelector(".win");
+    const game_win = document.querySelector(".game_win");
 
     timeleft--;
     timer.textContent = `0:${timeleft}`;
@@ -47,9 +52,13 @@ function countDownTimer() {
       ctr.style.visibility = "visible";
       lose.style.visibility = "hidden";
       win.style.visibility = "visible";
+      bg_music.pause();
+      // bg_music.currentTime = 0;
+      game_win.play();
     }
     for (let i = 0; i < bug.length; i++) {
       bug[i].addEventListener("click", () => {
+        bug_pull.play();
         clearInterval(download_timer);
         ctr.style.visibility = "visible";
         lose.style.visibility = "visible";
