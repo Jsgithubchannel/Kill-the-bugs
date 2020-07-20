@@ -8,13 +8,16 @@ const catch_cnt = document.querySelector(".catch__cnt");
 const carrot_pull = document.querySelector(".carrot_pull");
 const bg_music = document.querySelector(".bg_music");
 const try_again = document.querySelector(".try__again");
-const ctr = document.querySelector(".ctr");
-const lose = document.querySelector(".lose");
-const win = document.querySelector(".win");
+const popup = document.querySelector(".popup");
 const timer = document.querySelector(".cntdown__timer");
 let timeleft = 0;
 
+// 알림창 뜨거나, 시작 전 carrot 클릭 되는거 수정하기
+// 알림창 크기 조절 media query
+// 알림창 텍스트 여러개 나옴
+
 start.addEventListener("click", () => {
+  //이 addeventlistsener function으로 바꾸기
   onStart();
   countDownTimer();
   setPosition(carrot);
@@ -27,8 +30,6 @@ try_again.addEventListener("click", () => {
   countDownTimer();
   setPosition(carrot);
   setPosition(bug);
-  lose.style.visibility = "hidden";
-  win.style.visibility = "hidden";
 });
 
 for (let i = 0; i < carrot.length; i++) {
@@ -40,6 +41,8 @@ for (let i = 0; i < carrot.length; i++) {
 }
 
 function reset() {
+  popUpWindow("");
+  popup.style.visibility = "hidden";
   for (let i = 0; i < carrot.length; i++) {
     carrot[i].style.visibility = "visible";
   }
@@ -62,35 +65,28 @@ function countDownTimer() {
   timeleft = 10;
 
   let download_timer = setInterval(function () {
-    const game_win = document.querySelector(".game_win");
-
     timeleft--;
     timer.textContent = `0:${timeleft}`;
     if (timeleft <= 0 && catch_cnt.textContent != carrot.length) {
       clearInterval(download_timer);
-      win.style.visibility = "hidden";
-      ctr.style.visibility = "visible";
-      lose.style.visibility = "visible";
-      try_again.style.visibility = "visible";
-      bg_music.pause();
-      bug_pull.play();
+      popUpWindow("YOU CAN TRY AGAIN");
+      // bg_music.pause();
+      // bug_pull.play();
     } else if (catch_cnt.textContent == carrot.length) {
       clearInterval(download_timer);
-      ctr.style.visibility = "visible";
-      lose.style.visibility = "hidden";
-      win.style.visibility = "visible";
-      try_again.style.visibility = "visible";
+      popUpWindow("CONGRATULATIONS!");
       bg_music.pause();
       // bg_music.currentTime = 0;
-      game_win.play();
+      const game_win = document.createElement("AUDIO");
+      game_win.setAttribute("src", "sound/game_win.mp3");
+      popup.appendChild(game_win);
     }
     for (let i = 0; i < bug.length; i++) {
       bug[i].addEventListener("click", () => {
         // bg_music.pause();
         // bug_pull.play();
         clearInterval(download_timer);
-        lose.style.visibility = "visible";
-        try_again.style.visibility = "visible";
+        popUpWindow("YOU CAN TRY AGAIN");
       });
     }
   }, 1000);
@@ -114,4 +110,14 @@ function setPosition(e) {
     //   "px";
     e[i].style.bottom = Math.floor(Math.random() * max_h) + "px";
   }
+}
+
+function popUpWindow(text) {
+  popup.style.visibility = "visible";
+  try_again.style.visibility = "visible";
+  const phrase = document.createElement("div");
+  phrase.setAttribute("class", "phrase");
+  const newtext = document.createTextNode(text);
+  phrase.appendChild(newtext);
+  popup.appendChild(phrase);
 }
