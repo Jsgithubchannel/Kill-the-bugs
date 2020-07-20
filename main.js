@@ -10,11 +10,12 @@ const bg_music = document.querySelector(".bg_music");
 const try_again = document.querySelector(".try__again");
 const popup = document.querySelector(".popup");
 const timer = document.querySelector(".cntdown__timer");
+const img_container = document.querySelector(".img__container");
 let timeleft = 0;
 
-// 알림창 뜨거나, 시작 전 carrot 클릭 되는거 수정하기
 // 알림창 크기 조절 media query
 // 알림창 텍스트 여러개 나옴
+//일시정지 기능.. 불가능?
 
 start.addEventListener("click", () => {
   //이 addeventlistsener function으로 바꾸기
@@ -30,6 +31,7 @@ try_again.addEventListener("click", () => {
   countDownTimer();
   setPosition(carrot);
   setPosition(bug);
+  //popup.innerHTML = "";
 });
 
 for (let i = 0; i < carrot.length; i++) {
@@ -41,19 +43,16 @@ for (let i = 0; i < carrot.length; i++) {
 }
 
 function reset() {
-  popUpWindow("");
   popup.style.visibility = "hidden";
-  for (let i = 0; i < carrot.length; i++) {
+  for (let i = 0; i < carrot.length; i++)
     carrot[i].style.visibility = "visible";
-  }
   catch_cnt.textContent = 0;
   timeleft = 10;
   timer.textContent = `0:${timeleft}`;
 }
 
 function onStart() {
-  const imgs = document.querySelector(".img__container");
-  imgs.style.visibility = "visible";
+  img_container.style.visibility = "visible";
   end.style.visibility = "visible";
   start.style.visibility = "hidden";
   try_again.style.visibility = "hidden";
@@ -61,7 +60,7 @@ function onStart() {
 }
 
 function countDownTimer() {
-  const bug_pull = document.querySelector(".bug_pull");
+  //const bug_pull = document.querySelector(".bug_pull");
   timeleft = 10;
 
   let download_timer = setInterval(function () {
@@ -70,23 +69,27 @@ function countDownTimer() {
     if (timeleft <= 0 && catch_cnt.textContent != carrot.length) {
       clearInterval(download_timer);
       popUpWindow("YOU CAN TRY AGAIN");
+      img_container.style.visibility = "hidden";
       // bg_music.pause();
       // bug_pull.play();
     } else if (catch_cnt.textContent == carrot.length) {
       clearInterval(download_timer);
       popUpWindow("CONGRATULATIONS!");
-      bg_music.pause();
+      img_container.style.visibility = "hidden";
+      // bg_music.pause();
       // bg_music.currentTime = 0;
-      const game_win = document.createElement("AUDIO");
-      game_win.setAttribute("src", "sound/game_win.mp3");
-      popup.appendChild(game_win);
+      // const game_win = document.createElement("AUDIO");
+      // game_win.setAttribute("src", "sound/game_win.mp3");
+      // popup.appendChild(game_win);
     }
+
     for (let i = 0; i < bug.length; i++) {
       bug[i].addEventListener("click", () => {
         // bg_music.pause();
         // bug_pull.play();
         clearInterval(download_timer);
         popUpWindow("YOU CAN TRY AGAIN");
+        img_container.style.display = "none";
       });
     }
   }, 1000);
@@ -120,4 +123,8 @@ function popUpWindow(text) {
   const newtext = document.createTextNode(text);
   phrase.appendChild(newtext);
   popup.appendChild(phrase);
+
+  //if popup has more than two childNodes,
+  //remove all except one
+  if (popup.childNodes.length > 4) popup.removeChild(popup.lastChild);
 }
